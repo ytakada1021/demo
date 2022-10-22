@@ -1,2 +1,6 @@
 node_modules
 target
+cdk.out
+.DS_Store
+
+/tmp
