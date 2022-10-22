@@ -1,0 +1,8 @@
+[package]
+name = "ytakada-dev-driver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mongodb = "2.3.0"
+ytakada-dev-core = { path = "../ytakada-dev-core", version = "0.1.0" }
