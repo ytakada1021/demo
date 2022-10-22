@@ -1,0 +1,24 @@
+{
+  "name": "ytakada-dev-stack",
+  "version": "0.1.0",
+  "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.177.0",
+    "@aws-cdk/aws-lambda": "^1.177.0",
+    "@aws-cdk/aws-s3": "^1.177.0",
+    "@aws-cdk/core": "^1.177.0",
+    "@types/node": "^18.11.0",
+    "aws-cdk": "^2.46.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "cdk:deploy": "export CDK_APPROVAL='never' || export CDK_APPROVAL='broadening'; cdk deploy --require-approval $CDK_APPROVAL '*'",
+    "cdk:hotswap": "export CDK_APPROVAL='never' || export CDK_APPROVAL='broadening'; cdk deploy --require-approval $CDK_APPROVAL '*' --hotswap",
+    "cdk:bootstrap": "cdk bootstrap aws://$(aws sts get-caller-identity | jq -r .Account)/$AWS_REGION",
+    "cdklocal:clear-cache": "(rm ~/.cdk/cache/accounts.json || true) && (rm ~/.cdk/cache/accounts_partitions.json || true)",
+    "cdklocal:deploy": "npm run cdklocal:clear-cache && cdklocal deploy --require-approval never '*'",
+    "cdklocal:hotswap": "npm run cdklocal:clear-cache && cdklocal deploy --require-approval never '*' --hotswap",
+    "cdklocal:bootstrap": "npm run cdklocal:clear-cache && cdklocal bootstrap"
+  }
+}
