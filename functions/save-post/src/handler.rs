@@ -1,6 +1,6 @@
 use lambda_http::{Error, IntoResponse, Request, RequestExt, Response, Body};
 
-use crate::app;
+use crate::service;
 
 pub async fn handler(req: Request) -> Result<impl IntoResponse, Error> {
     let post_id = req
@@ -14,7 +14,7 @@ pub async fn handler(req: Request) -> Result<impl IntoResponse, Error> {
         _ => Err(()),
     }.unwrap();
 
-    let post = app::save_post(post_id, body);
+    let post = service::save_post(post_id, body).await.unwrap();
 
     let res = Response::builder()
         .status(200)

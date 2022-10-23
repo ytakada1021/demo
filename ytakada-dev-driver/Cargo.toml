@@ -4,5 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.66"
+bson = { version = "2", features = ["chrono-0_4"] }
+chrono = { version = "0.4.22", features = ["serde"] }
 mongodb = "2.3.0"
+serde = { version = "1.0.145", features = ["derive"] }
 ytakada-dev-core = { path = "../ytakada-dev-core", version = "0.1.0" }

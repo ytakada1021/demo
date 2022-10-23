@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "ytakada-dev-core",
+    "ytakada-dev-driver",
+    "functions/save-post",
+]
