@@ -1,4 +1,8 @@
+use std::env;
+
 use lambda_http::{Error, IntoResponse, Request, RequestExt, Response, Body};
+use sqlx::MySqlPool;
+use ytakada_dev_adapter::persistence::post::{MysqlPostRepository, PostRepository};
 
 use crate::service;
 
@@ -14,7 +18,11 @@ pub async fn handler(req: Request) -> Result<impl IntoResponse, Error> {
         _ => Err(()),
     }.unwrap();
 
-    let post = service::save_post(post_id, body).await.unwrap();
+    let repository = MysqlPostRepository {
+        pool: MySqlPool::connect("mysql://root:password@mysql/local").await.unwrap(),
+    };
+
+    let post = service::save_post(post_id, body, &repository).await.unwrap();
 
     let res = Response::builder()
         .status(200)

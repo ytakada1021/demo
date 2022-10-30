@@ -1,0 +1,12 @@
+[package]
+name = "ytakada-dev-adapter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.66"
+async-trait = "0.1.58"
+chrono = { version = "0.4.22", features = ["serde"] }
+sqlx = { version = "0.6", features = [ "chrono", "runtime-tokio-native-tls", "mysql" ] }
+tokio = { version = "1.21.2", features = ["full"] }
+ytakada-dev-core = { path="../ytakada-dev-core", version = "0.1.0" }
